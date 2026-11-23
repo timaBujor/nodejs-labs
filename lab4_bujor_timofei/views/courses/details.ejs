@@ -1,0 +1,38 @@
+<%- include('../partials/header', { title: title }) %>
+
+<a href="/courses" class="back-link">← К списку курсов</a>
+
+<div class="card">
+    <h1><%= course.title %></h1>
+    <dl class="details">
+        <dt>Кредиты</dt>
+        <dd><%= course.credits %></dd>
+
+        <dt>Семестр</dt>
+        <dd><%= course.semester %></dd>
+
+        <dt>Описание</dt>
+        <dd><%= course.description %></dd>
+
+        <% if (course.Teacher) { %>
+            <dt>Преподаватель</dt>
+            <dd><a href="/teachers/<%= course.Teacher.id %>"><%= course.Teacher.name %></a></dd>
+
+            <dt>Email преподавателя</dt>
+            <dd><%= course.Teacher.email %></dd>
+
+            <dt>Кафедра</dt>
+            <dd><%= course.Teacher.department %></dd>
+        <% } %>
+    </dl>
+
+    <div class="actions">
+        <a href="/courses/<%= course.id %>/edit" class="btn btn-edit">Редактировать</a>
+        <form action="/courses/<%= course.id %>/delete" method="POST"
+              onsubmit="return confirm('Вы действительно хотите удалить этот курс?')">
+            <button type="submit" class="btn btn-delete">Удалить</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

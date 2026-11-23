@@ -1,0 +1,59 @@
+<%- include('partials/header', { title: title }) %>
+
+<h1>Статистика</h1>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-value"><%= teachersCount %></div>
+        <div class="stat-label">Преподавателей</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value"><%= coursesCount %></div>
+        <div class="stat-label">Курсов</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value"><%= topTeacher ? topTeacher.name : '—' %></div>
+        <div class="stat-label">
+            Больше всего курсов<%= topTeacher ? ' (' + topTeacher.coursesCount + ')' : '' %>
+        </div>
+    </div>
+</div>
+
+<div class="stats-columns">
+    <div class="card">
+        <h2>Курсы по семестрам</h2>
+        <% if (bySemester.length === 0) { %>
+            <p class="empty">Курсы не найдены</p>
+        <% } else { %>
+            <table>
+                <thead><tr><th>Семестр</th><th>Курсов</th></tr></thead>
+                <tbody>
+                    <% bySemester.forEach(row => { %>
+                        <tr><td><%= row.semester %></td><td><%= row.count %></td></tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+
+    <div class="card">
+        <h2>Курсы по преподавателям</h2>
+        <% if (byTeacher.length === 0) { %>
+            <p class="empty">Преподаватели не найдены</p>
+        <% } else { %>
+            <table>
+                <thead><tr><th>Преподаватель</th><th>Курсов</th></tr></thead>
+                <tbody>
+                    <% byTeacher.forEach(row => { %>
+                        <tr>
+                            <td><a href="/teachers/<%= row.id %>"><%= row.name %></a></td>
+                            <td><%= row.coursesCount %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

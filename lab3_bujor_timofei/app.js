@@ -10,11 +10,9 @@ app.locals.student = {
     group: 'IAFR2302'
 };
 
-// Настройка EJS
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-// Middleware
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.static('public'));               
 app.use(logger);                                 

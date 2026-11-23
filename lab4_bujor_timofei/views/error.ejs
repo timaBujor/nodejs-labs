@@ -1,0 +1,9 @@
+<%- include('partials/header', { title: title }) %>
+
+<div class="card error-page">
+    <h1 class="error-code">500</h1>
+    <p><%= message %></p>
+    <a href="/courses" class="btn btn-primary">К списку курсов</a>
+</div>
+
+<%- include('partials/footer') %>

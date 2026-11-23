@@ -6,7 +6,8 @@
 |---|------|-------|
 | 1 | Простой HTTP-сервер на Node.js | [lab1_bujor_timofei](./lab1_bujor_timofei) |
 | 2 | REST API на Express.js (MVC) | [lab2_bujor_timofei](./lab2_bujor_timofei) |
-
+| 3 | Веб-приложение на Express.js + EJS | [lab3_bujor_timofei](./lab3_bujor_timofei) |
+| 4 | CRUD с PostgreSQL и Sequelize | [lab4_bujor_timofei](./lab4_bujor_timofei) |
 ## Запуск
 cd lab1_bujor_timofei (или lab2_...)
 npm install
