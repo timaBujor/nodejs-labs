@@ -1,0 +1,17 @@
+{
+  "name": "lab3_bujor_timofei",
+  "version": "1.0.0",
+  "description": "**Студент:** Bujor Timofei, группа IAFR2302 **GitHub:** https://github.com/USERNAME/nodejs-labs/tree/main/lab3_bujor_timofei",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ejs": "^7.0.2",
+    "express": "^5.3.0"
+  }
+}
