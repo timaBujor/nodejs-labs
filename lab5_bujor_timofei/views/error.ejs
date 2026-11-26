@@ -1,0 +1,14 @@
+<%- include('partials/header', { title: title }) %>
+
+<div class="card error-page">
+    <h1 class="error-code"><%= status %></h1>
+    <p><%= message %></p>
+    <% if (status === 401) { %>
+        <a href="/login" class="btn btn-primary">Войти</a>
+    <% } else { %>
+        <a href="javascript:history.back()" class="btn btn-light">Назад</a>
+        <a href="/courses" class="btn btn-primary">К списку курсов</a>
+    <% } %>
+</div>
+
+<%- include('partials/footer') %>

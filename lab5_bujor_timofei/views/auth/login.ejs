@@ -1,0 +1,33 @@
+<%- include('../partials/header', { title: title }) %>
+
+<div class="card auth-card">
+    <h1>Вход</h1>
+
+    <% if (registered) { %>
+        <div class="success">Регистрация прошла успешно. Теперь войдите в систему.</div>
+    <% } %>
+
+    <% if (errors.length > 0) { %>
+        <div class="errors">
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error %></li>
+                <% }) %>
+            </ul>
+        </div>
+    <% } %>
+
+    <form action="/login" method="POST" class="form">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" value="<%= form.email || '' %>">
+
+        <label for="password">Пароль</label>
+        <input type="password" id="password" name="password">
+
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+
+    <p class="auth-switch">Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+</div>
+
+<%- include('../partials/footer') %>

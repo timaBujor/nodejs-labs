@@ -17,7 +17,9 @@ Node.js, Express.js, PostgreSQL, Sequelize, EJS, dotenv, архитектура 
 npm install
 node app.js
 ```
-Приложение: http://localhost:3000. Таблицы `Teachers` и `Courses` создаются автоматически (`sequelize.sync()`), начальные данные добавляются, если таблицы пустые.
+Приложение: http://localhost:3000
+
+Таблицы `Teachers` и `Courses` создаются автоматически (`sequelize.sync()`), начальные данные добавляются, если таблицы пустые.
 
 ## Структура (MVC)
 - `config/database.js` — подключение Sequelize к PostgreSQL
@@ -29,23 +31,42 @@ node app.js
 - `views/` — EJS-шаблоны
 - `public/css/style.css` — оформление
 
-## Маршруты
-| Метод | URL | Назначение |
+## Курсы
+| Назначение | Адрес |
+|---|---|
+| Главная (перенаправляет на курсы) | http://localhost:3000/ |
+| Список курсов | http://localhost:3000/courses |
+| Поиск по названию | http://localhost:3000/courses?search=node |
+| Фильтр по преподавателю | http://localhost:3000/courses?teacherId=1 |
+| Фильтр по семестру | http://localhost:3000/courses?semester=1 |
+| Комбинированный фильтр | http://localhost:3000/courses?search=web&teacherId=1&semester=1 |
+| Форма добавления курса | http://localhost:3000/courses/new |
+| Просмотр курса | http://localhost:3000/courses/1 |
+| Форма редактирования | http://localhost:3000/courses/1/edit |
+| Курс не найден (404) | http://localhost:3000/courses/999 |
+| Некорректный ID (404) | http://localhost:3000/courses/abc |
+
+## Преподаватели
+| Назначение | Адрес |
+|---|---|
+| Список преподавателей | http://localhost:3000/teachers |
+| Форма добавления | http://localhost:3000/teachers/new |
+| Преподаватель и его курсы | http://localhost:3000/teachers/1 |
+| Форма редактирования | http://localhost:3000/teachers/1/edit |
+| Преподаватель не найден (404) | http://localhost:3000/teachers/999 |
+
+## Прочее
+| Назначение | Адрес |
+|---|---|
+| Статистика | http://localhost:3000/statistics |
+| Неизвестная страница (404) | http://localhost:3000/xyz |
+
+## Действия форм (POST, отправляются кнопками на страницах)
+| Метод | Адрес | Назначение |
 |---|---|---|
-| GET | / | Перенаправление на /courses |
-| GET | /courses | Список курсов (?search=, ?teacherId=, ?semester=) |
-| GET | /courses/new | Форма добавления курса |
-| POST | /courses | Сохранение курса |
-| GET | /courses/:id | Просмотр курса |
-| GET | /courses/:id/edit | Форма редактирования |
-| POST | /courses/:id/edit | Сохранение изменений |
-| POST | /courses/:id/delete | Удаление курса |
-| GET | /teachers | Список преподавателей |
-| GET | /teachers/new | Форма добавления преподавателя |
-| POST | /teachers | Сохранение преподавателя |
-| GET | /teachers/:id | Преподаватель и его курсы |
-| GET | /teachers/:id/edit | Форма редактирования |
-| POST | /teachers/:id/edit | Сохранение изменений |
-| POST | /teachers/:id/delete | Удаление (запрещено, если есть курсы) |
-| GET | /statistics | Статистика |
-| * | неизвестный URL | Страница 404 |
+| POST | http://localhost:3000/courses | Сохранение курса |
+| POST | http://localhost:3000/courses/1/edit | Сохранение изменений курса |
+| POST | http://localhost:3000/courses/1/delete | Удаление курса |
+| POST | http://localhost:3000/teachers | Сохранение преподавателя |
+| POST | http://localhost:3000/teachers/1/edit | Сохранение изменений преподавателя |
+| POST | http://localhost:3000/teachers/1/delete | Удаление (запрещено, если есть курсы) |

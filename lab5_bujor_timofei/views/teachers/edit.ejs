@@ -1,0 +1,10 @@
+<%- include('../partials/header', { title: title }) %>
+
+<a href="/teachers/<%= teacher.id %>" class="back-link">← К преподавателю</a>
+
+<div class="card">
+    <h1>Редактирование преподавателя</h1>
+    <%- include('_form', { action: '/teachers/' + teacher.id + '/edit', buttonText: 'Сохранить изменения' }) %>
+</div>
+
+<%- include('../partials/footer') %>

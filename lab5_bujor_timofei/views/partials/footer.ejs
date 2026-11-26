@@ -1,0 +1,12 @@
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <%= student.name %> · группа <%= student.group %> · <%= new Date().getFullYear() %>
+        </div>
+    </footer>
+
+    <!-- Socket.IO клиент (раздаётся сервером автоматически) и обработчик уведомлений -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/notifications.js"></script>
+</body>
+</html>

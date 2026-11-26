@@ -1,0 +1,10 @@
+<%- include('../partials/header', { title: title }) %>
+
+<a href="/courses/<%= course.id %>" class="back-link">← К курсу</a>
+
+<div class="card">
+    <h1>Редактирование курса</h1>
+    <%- include('_form', { action: '/courses/' + course.id + '/edit', buttonText: 'Сохранить изменения' }) %>
+</div>
+
+<%- include('../partials/footer') %>

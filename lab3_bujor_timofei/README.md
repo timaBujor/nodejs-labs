@@ -4,7 +4,7 @@
 **GitHub:** https://github.com/timaBujor/nodejs-labs/tree/main/lab3_bujor_timofei
 
 ## Тема
-Система управления учебными курсами: просмотр, добавление, редактирование, удаление, поиск и фильтрация курсов.
+Система управления учебными курсами: просмотр, добавление, редактирование, удаление, поиск и фильтрация курсов. Данные хранятся в массиве.
 
 ## Запуск
 ```
@@ -22,15 +22,25 @@ node app.js
 - `views/` — EJS-шаблоны (courses, partials, 404, error)
 - `public/css/style.css` — оформление
 
-## Маршруты
-| Метод | URL | Назначение |
+## Страницы
+| Назначение | Адрес |
+|---|---|
+| Главная (перенаправляет на список) | http://localhost:3000/ |
+| Список курсов | http://localhost:3000/courses |
+| Поиск по названию | http://localhost:3000/courses?search=node |
+| Поиск по преподавателю | http://localhost:3000/courses?search=ivan |
+| Фильтр по семестру | http://localhost:3000/courses?semester=1 |
+| Поиск + семестр | http://localhost:3000/courses?search=node&semester=3 |
+| Ничего не найдено | http://localhost:3000/courses?search=zzz |
+| Форма добавления | http://localhost:3000/courses/new |
+| Просмотр курса | http://localhost:3000/courses/1 |
+| Форма редактирования | http://localhost:3000/courses/1/edit |
+| Курс не найден (404) | http://localhost:3000/courses/999 |
+| Неизвестная страница (404) | http://localhost:3000/abc |
+
+## Действия форм (POST, отправляются кнопками на страницах)
+| Метод | Адрес | Назначение |
 |---|---|---|
-| GET | / | Перенаправление на /courses |
-| GET | /courses | Список курсов (?search=, ?semester=) |
-| GET | /courses/new | Форма добавления |
-| POST | /courses | Сохранение нового курса |
-| GET | /courses/:id | Просмотр курса |
-| GET | /courses/:id/edit | Форма редактирования |
-| POST | /courses/:id/edit | Сохранение изменений |
-| POST | /courses/:id/delete | Удаление курса |
-| * | неизвестный URL | Страница 404 |
+| POST | http://localhost:3000/courses | Сохранение нового курса |
+| POST | http://localhost:3000/courses/1/edit | Сохранение изменений |
+| POST | http://localhost:3000/courses/1/delete | Удаление курса |

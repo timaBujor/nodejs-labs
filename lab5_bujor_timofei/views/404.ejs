@@ -1,0 +1,10 @@
+<%- include('partials/header', { title: title }) %>
+
+<div class="card error-page">
+    <h1 class="error-code">404</h1>
+    <p><strong>Not Found</strong> — <%= typeof message !== 'undefined' ? message : 'Страница не найдена' %></p>
+    <p>Запрошенный URL: <code><%= url %></code></p>
+    <a href="/courses" class="btn btn-primary">К списку курсов</a>
+</div>
+
+<%- include('partials/footer') %>

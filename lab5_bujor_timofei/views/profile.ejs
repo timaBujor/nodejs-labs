@@ -1,0 +1,30 @@
+<%- include('partials/header', { title: title }) %>
+
+<div class="card">
+    <h1>Профиль</h1>
+    <dl class="details">
+        <dt>Имя</dt>
+        <dd><%= user.name %></dd>
+
+        <dt>Email</dt>
+        <dd><%= user.email %></dd>
+
+        <dt>Роль</dt>
+        <dd><span class="badge <%= user.role === 'admin' ? 'badge-admin' : 'badge-user' %>"><%= user.role %></span></dd>
+
+        <dt>Дата регистрации</dt>
+        <dd><%= formatDate(user.createdAt) %></dd>
+
+        <dt>Последний вход</dt>
+        <dd><%= user.lastLogin ? formatDate(user.lastLogin) : '—' %></dd>
+    </dl>
+</div>
+
+<div class="card session-card">
+    <h2>Данные в сессии</h2>
+    <p class="hint">Сервер хранит в сессии только эти данные (без пароля). Браузер хранит лишь cookie с ID сессии.</p>
+    <pre><%= JSON.stringify(session.user, null, 2) %></pre>
+    <p class="hint">Сессия истекает: <%= formatDate(session.cookie.expires) %></p>
+</div>
+
+<%- include('partials/footer') %>
